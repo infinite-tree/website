@@ -27,6 +27,9 @@ $(document).ready(function(){
     // hide stuff
     $('.hide-inf').hide();
 
+    // Initialize InputMask
+    $('.phone-input').mask("(000) 000-0000")
+
     //  Activate the tooltips
     $('[data-toggle="tooltip"]').tooltip();
 

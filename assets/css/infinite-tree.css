@@ -1293,3 +1293,10 @@
 .section-dark-grey{
   background-color: #777777;
 }
+
+.full-height{
+  height:100%;
+}
+textarea.form-control.full-height{
+  height:90%;
+}

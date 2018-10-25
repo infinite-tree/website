@@ -1259,10 +1259,11 @@
     z-index: 2;
 }
 
-.lnk{
+.lnk,.lnk:active,.lnk:focus,.lnk:hover{
   /*color: #A89D5D;*/
   color: #e8cb84;
 }
+
 
 @font-face{
     font-family: "Avenir-Book";
@@ -1301,6 +1302,7 @@
 }
 
 .section-dark-grey{
+  color:#FFFFFF;
   background-color: #777777;
 }
 

@@ -1282,7 +1282,17 @@
    background-color: #777777;
    border-color: #777777;
 }
-
+.sending-msg{
+  text-align: center;
+}
+.failed-msg{
+  text-align: center;
+  color:#f7765f;
+}
+.success-msg{
+  text-align: center;
+  color:#86d9ab;
+}
 .center-title{
   color: #e8cb84;
   display: flex;

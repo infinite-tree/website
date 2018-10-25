@@ -41,6 +41,13 @@ $(function() {
 
                     //clear all fields
                     $('#contactForm').trigger("reset");
+                    $('#contactSending').hide();
+                    $('#contactSuccess').show();
+                    $('#contactModal').fadeTo(2500, 0, function(){
+                        $('#contactSuccess').hide();
+                        $('#contactForm').show();
+                        $('#contactModal').modal('hide');
+                    });
                 },
                 error: function() {
                     // Fail message
@@ -51,8 +58,12 @@ $(function() {
                     $('#success > .alert-danger').append('</div>');
                     //clear all fields
                     $('#contactForm').trigger("reset");
+                    $('#contactSending').hide();
+                    $('#contactFailed').show();
                 },
             });
+            $('#contactForm').hide();
+            $('#contactSending').show();
         },
         filter: function() {
             return $(this).is(":visible");

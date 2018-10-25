@@ -26,6 +26,9 @@ $(document).ready(function(){
 
     // hide stuff
     $('.hide-inf').hide();
+    $('#contactSending').hide();
+    $('#contactFailed').hide();
+    $('#contactSuccess').hide();
 
     // Initialize InputMask
     $('.phone-input').mask("(000) 000-0000")

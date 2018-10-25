@@ -1312,3 +1312,6 @@
 textarea.form-control.full-height{
   height:90%;
 }
+.hidden{
+  display: none;
+}

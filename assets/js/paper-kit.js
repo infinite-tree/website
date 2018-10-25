@@ -24,12 +24,6 @@ var navbar_initialized = false;
 $(document).ready(function(){
     window_width = $(window).width();
 
-    // hide stuff
-    $('.hide-inf').hide();
-    $('#contactSending').hide();
-    $('#contactFailed').hide();
-    $('#contactSuccess').hide();
-
     // Initialize InputMask
     $('.phone-input').mask("(000) 000-0000")
 
@@ -148,13 +142,13 @@ pk = {
                 if(transparent) {
                     transparent = false;
                     $('.navbar[color-on-scroll]').removeClass('navbar-transparent');
-                    $('.hide-inf').show();
+                    $('.hide-inf').removeClass('hidden');
                 }
             } else {
                 if( !transparent ) {
                     transparent = true;
                     $('.navbar[color-on-scroll]').addClass('navbar-transparent');
-                    $('.hide-inf').hide();
+                    $('.hide-inf').addClass('hidden');
                 }
             }
     }, 17),

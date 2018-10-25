@@ -41,11 +41,11 @@ $(function() {
 
                     //clear all fields
                     $('#contactForm').trigger("reset");
-                    $('#contactSending').hide();
-                    $('#contactSuccess').show();
+                    $('#contactSending').addClass('hidden');
+                    $('#contactSuccess').removeClass('hidden');
                     $('#contactModal').fadeTo(2500, 0, function(){
-                        $('#contactSuccess').hide();
-                        $('#contactForm').show();
+                        $('#contactSuccess').addClass('hidden');
+                        $('#contactForm').removeClass('hidden');
                         $('#contactModal').modal('hide');
                     });
                 },
@@ -58,12 +58,12 @@ $(function() {
                     $('#success > .alert-danger').append('</div>');
                     //clear all fields
                     $('#contactForm').trigger("reset");
-                    $('#contactSending').hide();
-                    $('#contactFailed').show();
+                    $('#contactSending').addClass('hidden');
+                    $('#contactFailed').removeClass('hidden');
                 },
             });
-            $('#contactForm').hide();
-            $('#contactSending').show();
+            $('#contactForm').addClass('hidden');
+            $('#contactSending').removeClass('hidden');
         },
         filter: function() {
             return $(this).is(":visible");

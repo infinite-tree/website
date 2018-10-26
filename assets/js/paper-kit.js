@@ -90,6 +90,28 @@ $(document).ready(function(){
     // Init Sliders
     pk.initSliders();
 
+    // Twitter
+    var processTweet = function(tweets) {
+
+        if (tweets.length > 0) {
+            var div1 = document.getElementById('Tweet1');
+            div1.innerHTML += tweets[0].tweet + "<hr class=\"hr-small\">";
+        }
+        if (tweets.length > 1) {
+            var div2 = document.getElementById('Tweet2');
+            div2.innerHTML += tweets[1].tweet;
+        }
+    };
+
+    var config = {
+        "profile": {"screenName": 'infinitetreenu1'},
+        "dataOnly": true,
+        "maxTweets": 2,
+        "domId": "foobar",
+        "customCallback": processTweet
+    };
+    twitterFetcher.fetch(config);
+
 });
 
 

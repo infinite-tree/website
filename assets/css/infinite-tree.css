@@ -1262,6 +1262,17 @@
 .lnk,.lnk:active,.lnk:focus,.lnk:hover{
   /*color: #A89D5D;*/
   color: #e8cb84;
+  padding-left: 0px;
+}
+.foot-lnk,.foot-lnk:active,.foot-lnk:focus,.foot-lnk:hover{
+  /*color: #A89D5D;*/
+  color: #CFCDC9;
+  background-color: transparent;
+  border-width: 0px;
+  font-weight: 300;
+  padding-left: 0px;
+  text-transform: unset;
+  font-size: 14px;
 }
 
 
@@ -1283,6 +1294,7 @@
    background-color: #777777;
    border-color: #777777;
 }
+
 .sending-msg{
   text-align: center;
 }

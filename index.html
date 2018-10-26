@@ -180,8 +180,11 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>What are your growing methods?</label><br>
+                                    <input type="hidden" name="MethodIndoor" value="">
                                     <input type="checkbox" name="MethodIndoor" value="yes">Indoor<br>
+                                    <input type="hidden" name="MethodLightdep" value="">
                                     <input type="checkbox" name="MethodLightdep" value="yes">Lightdep<br>
+                                    <input type="hidden" name="MethodOutdoor" value="">
                                     <input type="checkbox" name="MethodOutdoor" value="yes">Outdoor<br>
                                 </div>
                                 <br>
@@ -195,10 +198,15 @@
                                 <br>
                                 <div class="form-group">
                                     <label>What are your goals for 2019?</label><br>
+                                    <input type="hidden" name="GoalsIPM" value="">
                                     <input type="checkbox" name="GoalsIPM" value="yes">Mitigate pest/disease pressures<br>
+                                    <input type="hidden" name="GoalsYield" value="">
                                     <input type="checkbox" name="GoalsYield" value="yes">Increase harvest index<br>
+                                    <input type="hidden" name="GoalsStagger" value="">
                                     <input type="checkbox" name="GoalsStagger" value="yes">Stagger harvest times<br>
+                                    <input type="hidden" name="GoalsCosts" value="">
                                     <input type="checkbox" name="GoalsCosts" value="yes">Decrease processing costs<br>
+                                    <input type="hidden" name="GoalsTime" value="">
                                     <input type="checkbox" name="GoalsTime" value="yes">Spend more time on the business, not babysitting clones!<br>
                                 </div>
                             </div>
@@ -237,19 +245,19 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 column">
-                        <h4>Our Services</h4>
+                        <h4>Our Services</h4><br>
                         <p> Our focus is on serving you. We deliver high quality plants that produce a final product that is <u> tailored to suit your needs, for your desired market </u>. We have curated an inventory of cultivars to serve the broader nursery market. We also have partnerships with breeders to source unique material just for you. Please inquire about our current inventory, and get in touch about how we can better serve you.</p>
-                        <a class="lnk" href="#">Get in touch <i class="fa fa-chevron-right"></i></a>
+                        <button type="button" class="nav-link nav-btn lnk" data-placement="bottom" data-toggle="modal" data-target="#contactModal">Get in touch<i class="fa fa-chevron-right"></i></button>
                     </div>
                     <div class="col-md-4 column">
-                        <h4>ODA Hemp Clones</h4>
+                        <h4>ODA Hemp Clones</h4><br>
                         <p> Now accepting new clients for 2019. We source, propagate, and sex, hemp cultivars that match your production needs. We look forward to learning about your needs and working with you. </p>
-                        <a class="lnk" href="#"> Hemp Clone Inquiry <i class="fa fa-chevron-right"></i></a>
+                        <button type="button" class="nav-link nav-btn lnk" data-placement="bottom" data-toggle="modal" data-target="#orderModal">Hemp Clone Inquiry <i class="fa fa-chevron-right"></i></button>
                     </div>
                     <div class="col-md-4 column">
-                        <h4>OLCC Marijuana Clones</h4>
+                        <h4>OLCC Marijuana Clones</h4><br>
                         <p>We are a year-round nursery with the capacity to deliver in quantity, according to your schedule. Call us to find out about cultivars that suit you, and we can chat about ways specific cultivars can help your bottom line. Whether you are looking to improve trim costs, harvest yield/timing, or get your hands on particular flavor profile, we likely have something for you or can source it quickly through our network.</p>
-                        <a class="lnk" href="#">Marijuana Clone Inquiry <i class="fa fa-chevron-right"></i></a>
+                        <button type="button" class="nav-link nav-btn lnk" data-placement="bottom" data-toggle="modal" data-target="#orderModal">Marijuana Clone Inquiry <i class="fa fa-chevron-right"></i></button>
                     </div>
                 </div>
             </div>
@@ -278,10 +286,10 @@
                          <nav>
                             <ul>
                                 <li>
-                                    <a href="#">Contact Us</a>
+                                    <button type="button" class="btn foot-lnk" data-placement="bottom" data-toggle="modal" data-target="#contactModal">Contact Us</button>
                                 </li>
                                 <li>
-                                    <a href="#">Our Services</a>
+                                    <button type="button" class="btn foot-lnk" data-placement="bottom" data-toggle="modal" data-target="#orderModal">Our Services</button>
                                 </li>
                                 <li>
 
@@ -365,7 +373,7 @@
 <!-- Google form submission -->
 <script src="https://cdn.jsdelivr.net/npm/formdata-polyfill@3.0.12/formdata.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
-<script src="https://wzrd.in/standalone/whatwg-fetch@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@3.0.0/dist/fetch.umd.min.js"></script>
 <script>
   const scriptURL = 'https://script.google.com/macros/s/AKfycbzysJCY5HlE4StfHRKI5QgAdhow_Ti1CRssLVBIkQ95vwAlcGTS/exec'
   const form = document.forms['submit-to-google-sheet']
@@ -384,6 +392,7 @@
             $('#orderSuccess').addClass('hidden')
             $('#orderForm').removeClass('hidden')
             $('#orderModal').modal('hide')
+            $('#orderModal').css({opacity: 1})
         });
       }).catch(error => {
         $('#orderForm').trigger("reset")

@@ -47,6 +47,8 @@ $(function() {
                         $('#contactSuccess').addClass('hidden');
                         $('#contactForm').removeClass('hidden');
                         $('#contactModal').modal('hide');
+                        $('#contactModal').css({opacity: 1})
+
                     });
                 },
                 error: function() {

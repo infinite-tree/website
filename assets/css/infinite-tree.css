@@ -1315,3 +1315,6 @@ textarea.form-control.full-height{
 .hidden{
   display: none;
 }
+label{
+  font-weight: bold;
+}

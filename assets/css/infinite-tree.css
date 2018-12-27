@@ -1330,6 +1330,9 @@
 textarea.form-control.full-height{
   height:90%;
 }
+.preview{
+  display: none;
+}
 .hidden{
   display: none;
 }

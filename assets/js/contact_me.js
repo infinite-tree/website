@@ -20,15 +20,18 @@ $(function() {
                 firstName = name.split(' ').slice(0, -1).join(' ');
             }
             $.ajax({
+                method: 'POST',
                 url: "https://www.enformed.io/nnrsy2po/",
-                type: "POST",
                 accepts: "application/json",
                 dataType: "json",
                 data: {
                     name: name,
                     phone: phone,
                     email: email,
-                    message: message
+                    message: message,
+                    "*reply": email,
+                    "*subject": "New mail from website contact form",
+                    "*default_email": "hello@infinite-tree.com"
                 },
                 cache: false,
                 success: function() {

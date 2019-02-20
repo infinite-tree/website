@@ -20,8 +20,10 @@ $(function() {
                 firstName = name.split(' ').slice(0, -1).join(' ');
             }
             $.ajax({
-                url: "./assets/php/contact_me.php",
+                url: "https://www.enformed.io/nnrsy2po/",
                 type: "POST",
+                accepts: "application/json",
+                dataType: "json",
                 data: {
                     name: name,
                     phone: phone,

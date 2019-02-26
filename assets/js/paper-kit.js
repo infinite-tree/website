@@ -62,7 +62,7 @@ $(document).ready(function(){
     $('[data-toggle="switch"]').bootstrapSwitch();
 
     // Navbar color change on scroll
-    if($('.navbar[color-on-scroll]').length != 0){
+    if($('.navbar').length != 0){
         $(window).on('scroll', pk.checkScrollForTransparentNavbar)
     }
 
@@ -160,16 +160,16 @@ pk = {
     }, 4),
 
     checkScrollForTransparentNavbar: debounce(function() {
-        	if($(document).scrollTop() > $(".navbar").attr("color-on-scroll") ) {
+        	if($(document).scrollTop() > $(".navbar") ) {
                 if(transparent) {
                     transparent = false;
-                    $('.navbar[color-on-scroll]').removeClass('navbar-transparent');
+                    $('.navbar').removeClass('navbar-transparent');
                     $('.hide-inf').removeClass('hidden');
                 }
             } else {
                 if( !transparent ) {
                     transparent = true;
-                    $('.navbar[color-on-scroll]').addClass('navbar-transparent');
+                    $('.navbar').addClass('navbar-transparent');
                     $('.hide-inf').addClass('hidden');
                 }
             }
@@ -300,3 +300,11 @@ function debounce(func, wait, immediate) {
 		if (immediate && !timeout) func.apply(context, args);
 	};
 };
+
+$(window).scroll(function(){
+	var sticky = $('body'),
+		scroll = $(window).scrollTop();
+  
+	if (scroll >= 60) $('.navbar').removeClass('navbar-transparent');
+	else $('.navbar').addClass('navbar-transparent');;
+});

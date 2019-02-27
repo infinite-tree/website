@@ -302,9 +302,14 @@ function debounce(func, wait, immediate) {
 };
 
 $(window).scroll(function(){
-	var sticky = $('body'),
-		scroll = $(window).scrollTop();
+	scroll = $(window).scrollTop();
   
-	if (scroll >= 60) $('.navbar').removeClass('navbar-transparent');
-	else $('.navbar').addClass('navbar-transparent');;
+	if (scroll >= 60) {
+		$('.navbar').removeClass('navbar-transparent');
+		$('.hide-inf').removeClass('hidden');
+	}
+	else {
+		$('.navbar').addClass('navbar-transparent');
+		$('.hide-inf').addClass('hidden');
+	}
 });

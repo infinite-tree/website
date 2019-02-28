@@ -336,6 +336,10 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
   border-bottom: 1px solid transparent;
 }
 
+.navbar-transparent .container {
+  display: none;
+}
+
 .btn {
   box-sizing: border-box;
   border-width: 2px;

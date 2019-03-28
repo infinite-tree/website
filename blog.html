@@ -43,6 +43,7 @@
 
     <!--  Site Specific CSS  -->
     <link href="./assets/css/infinite-tree.min.css" rel="stylesheet" />
+    <link href="./assets/css/inner-pages.css" rel="stylesheet" />
 
 
     <!--     Fonts and icons     -->
@@ -51,7 +52,7 @@
     <link href="./assets/css/nucleo-icons.css" rel="stylesheet">
 
 </head>
-<body id="page-top" class="index-page">
+<body>
 	<div itemscope>
 		<link itemprop="thumbnailUrl" href="https://infinite-tree.com/assets/img/logo-medium.png">
 		<span itemprop="thumbnail" itemscope itemtype="http://schema.org/ImageObject">
@@ -59,7 +60,7 @@
 		</span>
 	</div>
 
-    <header class="navbar navbar-expand-lg fixed-top navbar-transparent">
+    <header class="navbar navbar-expand-lg fixed-top">
         <div class="container">
 			<div class="navbar-translate">
 				<a class="navbar-brand" href="https://www.infinite-tree.com">Infinite Tree</a>
@@ -124,80 +125,116 @@
 		</div>
     </header>
 
-	<div class="page-header" data-parallax="true">
-		<div class="container">
-            <div class="row">
-                <div class="col-lg-5 column">
-                    <img src="./assets/img/logo-circle-fg.min.svg" style="width: 100%" alt="Infinite Tree"/>
-                </div>
-                <div class="col-lg-7 column center-title">
-                    <div class="container" style="text-align:center;">
-                        <h1>INFINITE TREE</h1>
-                        <p class="hide-inf hidden">A <i> Cannabis </i> nursery serving OLCC and ODA Clients</p>
-                        <button type="button" class="btn btn-inf btn-round hide-inf hidden" title="Get in touch" data-toggle="modal" data-target="#contactModal">Get in touch</button>
-                        <button type="button" class="btn btn-inf btn-round hide-inf hidden" title="Order" data-toggle="modal" data-target="#orderModal">Order</button>
-                    </div>
-                </div>
-            </div>
-		</div>
-	</div>
-
     <div class="main">
-        <div class="section text-left section-light-grey">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 column">
-                        <h4>Passionate & Methodical</h4><br>
-                        <div class="hoverbox">
-                            <img src="./assets/img/IPMshot.jpg" alt="Accountability" class="hoverbox-layer_bottom">
-                            <div class="hoverbox-layer_top">
-                                <div class="hoverbox-text"> We are passionate and methodical growers that take our horticultural practices seriously. We are happy to share our methods and data with you. </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 column">
-                        <h4>Nursery Specialists</h4><br>
-                        <div class="hoverbox">
-                            <img src="./assets/img/clones.jpg" alt="Propagation" class="hoverbox-layer_bottom">
-                            <div class="hoverbox-layer_top">
-                                <div class="hoverbox-text">We source and propagate cultivars that suit your needs. Get in touch to learn about our current inventory and auxiliary library services.</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 column">
-                        <h4>Agricultural Consultants</h4><br>
-                        <div class="hoverbox">
-                            <img src="./assets/img/consulting.jpg" alt="Consulting" class="hoverbox-layer_bottom">
-                            <div class="hoverbox-layer_top">
-                                <div class="hoverbox-text"> We consult domestically and internationally for diverse agricultural projects. We find solutions to problems and offer design and build services. </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="section text-left section-dark-grey">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 column">
-                        <h4>Our Services</h4><br>
-                        <p> Our focus is on serving you. We deliver high quality plants that produce a final product <u> tailored to suit your needs, for your desired market </u>. We have curated an inventory of cultivars to serve the broader nursery market. We also have partnerships with breeders to source unique material, just for you. Please inquire about our current inventory and get in touch about how we can better serve you.</p>
-                        <button type="button" class="nav-link nav-btn lnk" data-placement="bottom" data-toggle="modal" data-target="#contactModal">Get in touch<i class="fa fa-chevron-right"></i></button>
-                    </div>
-                    <div class="col-md-4 column">
-                        <h4>ODA Hemp Clones</h4><br>
-                        <p> Now accepting new clients for 2019. We source, propagate, and sex, hemp cultivars that match your production needs. We look forward to learning about your needs and working with you. </p>
-                        <button type="button" class="nav-link nav-btn lnk" data-placement="bottom" data-toggle="modal" data-target="#orderModal">Hemp Clone Inquiry <i class="fa fa-chevron-right"></i></button>
-                    </div>
-                    <div class="col-md-4 column">
-                        <h4>OLCC Marijuana Clones</h4><br>
-                        <p>We are a year-round nursery with the capacity to deliver in quantity, according to your schedule. Call us to find out about cultivars that suit you. We can also chat about ways specific cultivars can help your bottom line. Whether you are looking to improve costs, harvest yield or timing, or get your hands on particular flavor profile, we likely have something for you. We also provide auxiliary library services, and can source particular cultivars or maintain your proprietary material. </p>
-                        <button type="button" class="nav-link nav-btn lnk" data-placement="bottom" data-toggle="modal" data-target="#orderModal">Marijuana Clone Inquiry <i class="fa fa-chevron-right"></i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
+		<div class="articles-sort">
+			<div class="section-light-grey">
+				<div class="container">
+					<ul class="articles-sort__tag">
+						<li><button class="articles-sort__tag__current" id="img1" data-toggle="portfilter" data-target="all">Latest Articles</button></li>
+						<li><button data-toggle="portfilter" data-target="one">Popular</button></li>
+						<li><button data-toggle="portfilter" data-target="two">Product</button></li>
+						<li><button data-toggle="portfilter" data-target="three">Service</button></li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="section pt-0">
+				<div class="container">
+					<h3 id="articles-sort__title">Latest Articles</h3>
+					
+					<ul class="articles__list row">
+						<li class="col-md-4" data-tag="one">
+							<a href="article.html">
+								<figure class="figure">
+									<img src="assets/img/consulting.jpg" alt="img"/>
+									<figcaption>
+										<h5>Tag name #1</h5>
+										<p>Everything You Need to Know About Implementing a Price Increase</p>
+									</figcaption>
+								</figure>
+							</a>
+						</li>
+						<li class="col-md-4" data-tag="two">
+							<a href="article.html">
+								<figure class="figure">
+									<img src="assets/img/clones.jpg" alt="img"/>
+									<figcaption>
+										<h5>Tag name #2</h5>
+										<p>10 Essential Tactics for Creating Valuable Customer Surveys</p>
+									</figcaption>
+								</figure>
+							</a>
+						</li>
+						<li class="col-md-4" data-tag="three">
+							<a href="article.html">
+								<figure class="figure">
+									<img src="assets/img/IPMshot.jpg" alt="img"/>
+									<figcaption>
+										<h5>Tag name #3</h5>
+										<p>The Psychology of Color in Marketing and Branding</p>
+									</figcaption>
+								</figure>
+							</a>
+						</li>
+						<li class="col-md-4" data-tag="one">
+							<a href="article.html">
+								<figure class="figure">
+									<img src="assets/img/IPMshot.jpg" alt="img"/>
+									<figcaption>
+										<h5>Tag name #4</h5>
+										<p>The Psychology of Color in Marketing and Branding</p>
+									</figcaption>
+								</figure>
+							</a>
+						</li>
+						<li class="col-md-4" data-tag="one">
+							<a href="article.html">
+								<figure class="figure">
+									<img src="assets/img/IPMshot.jpg" alt="img"/>
+									<figcaption>
+										<h5>Tag name #5</h5>
+										<p>The Psychology of Color in Marketing and Branding</p>
+									</figcaption>
+								</figure>
+							</a>
+						</li>
+						<li class="col-md-4" data-tag="one">
+							<a href="article.html">
+								<figure class="figure">
+									<img src="assets/img/IPMshot.jpg" alt="img"/>
+									<figcaption>
+										<h5>Tag name #6</h5>
+										<p>The Psychology of Color in Marketing and Branding</p>
+									</figcaption>
+								</figure>
+							</a>
+						</li>
+						<li class="col-md-4" data-tag="two">
+							<a href="article.html">
+								<figure class="figure">
+									<img src="assets/img/IPMshot.jpg" alt="img"/>
+									<figcaption>
+										<h5>Tag name #7</h5>
+										<p>The Psychology of Color in Marketing and Branding</p>
+									</figcaption>
+								</figure>
+							</a>
+						</li>
+						<li class="col-md-4" data-tag="two">
+							<a href="article.html">
+								<figure class="figure">
+									<img src="assets/img/IPMshot.jpg" alt="img"/>
+									<figcaption>
+										<h5>Tag name #8</h5>
+										<p>The Psychology of Color in Marketing and Branding</p>
+									</figcaption>
+								</figure>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
     </div>
 
         <!-- Need to create css for footer-color-black (or grey), remove section-dark -->
@@ -535,5 +572,15 @@
 <!--  Paper Kit Initialization and functions -->
 <script src="./assets/js/paper-kit.min.js?v=2.1.0"></script>
 
+<script src="assets/js/bootstrap-portfilter.js"></script>
+
+<script type="text/javascript">
+	$('.articles-sort__tag button').click(function() {
+	  $('#articles-sort__title').html($(this).html());
+	});
+	$('.articles-sort__tag button').on('click', function(){
+	  $(this).addClass('articles-sort__tag__current').parent().siblings().find('button').removeClass('articles-sort__tag__current');
+	});
+</script>
 </body>
 </html>

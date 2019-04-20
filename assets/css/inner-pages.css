@@ -21,6 +21,22 @@
   border-color: #e8cb84;
   color: #fff; }
 
+.navbar-nav .has-submenu ul {
+  display: none;
+  position: absolute;
+  top: 55px;
+  padding: 25px 15px 10px;
+  min-width: 150px;
+  background: #000;
+  list-style: none; }
+  .navbar-nav .has-submenu ul li {
+    margin-bottom: 5px;
+    color: #e8cb84; }
+    .navbar-nav .has-submenu ul li a {
+      color: inherit; }
+.navbar-nav .has-submenu:hover ul {
+  display: block; }
+
 .breadcrumb {
   background: #1e1e1e; }
   .breadcrumb li {

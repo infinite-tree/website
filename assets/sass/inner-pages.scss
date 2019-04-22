@@ -1,5 +1,6 @@
 $color-white: #fff;
 $color-black: #1e1e1e;
+$color-black2: #000;
 $color-gray: #cfcdc9;
 $color-gold: #e8cb84;
 $color-darkgold: #b9a269;
@@ -33,6 +34,36 @@ $color-darkgold: #b9a269;
 	background: $color-gold;
 	border-color: $color-gold;
 	color: $color-white;
+}
+
+.navbar-nav {
+	.has-submenu {
+		
+			ul {
+				display: none;
+				position: absolute;
+				top: 55px;
+				padding: 25px 15px 10px;
+				min-width: 150px;
+				background: $color-black2;
+				list-style: none;
+				
+				li {
+					margin-bottom: 5px;
+					color: $color-gold;
+					
+					a {
+						color: inherit;
+					}
+				}
+			}
+			&:hover {
+				ul {
+					display: block;
+				}
+			}
+		
+	}
 }
 
 .breadcrumb {
@@ -90,8 +121,6 @@ $color-darkgold: #b9a269;
 			}
 		}
 	}
-	
-	
 }
 
 .articles__list {

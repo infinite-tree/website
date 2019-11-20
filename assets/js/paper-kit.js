@@ -61,11 +61,6 @@ $(document).ready(function(){
     // Activate bootstrap switch
     $('[data-toggle="switch"]').bootstrapSwitch();
 
-    // Navbar color change on scroll
-    if($('.navbar').length != 0){
-        $(window).on('scroll', pk.checkScrollForTransparentNavbar)
-    }
-
     // Activate tooltips
     $('.btn-tooltip').tooltip();
     $('.label-tooltip').tooltip();
@@ -81,27 +76,18 @@ $(document).ready(function(){
         $(this).parent(".input-group").removeClass("input-group-focus");
     });
 
-    // Init popovers
-    pk.initPopovers();
-
-    // Init Collapse Areas
-    pk.initCollapseArea();
-
-    // Init Sliders
-    pk.initSliders();
-
     // Twitter
-    var processTweet = function(tweets) {
+    var processTweet = function (tweets) {
         // Hack to pull out the instagram link and make the whole text point there
         for (var x = 0; x < tweets.length; x++) {
             var loc = tweets[x].tweet.search("<a href");
             var href = "";
             if (loc >= 0) {
                 href = tweets[x].tweet.slice(loc);
-                href = href.slice(href.search('"')+1);
+                href = href.slice(href.search('"') + 1);
                 href = href.slice(0, href.search('"'));
 
-                tweets[x].tweet = tweets[x].tweet.slice(0,loc);
+                tweets[x].tweet = tweets[x].tweet.slice(0, loc);
                 tweets[x].instagram = href;
             }
         }
@@ -123,7 +109,9 @@ $(document).ready(function(){
     };
 
     var config = {
-        "profile": {"screenName": 'infinitetreenu1'},
+        "profile": {
+            "screenName": 'infinitetreenu1'
+        },
         "dataOnly": true,
         "maxTweets": 2,
         "domId": "foobar",
@@ -131,6 +119,19 @@ $(document).ready(function(){
     };
     twitterFetcher.fetch(config);
 
+    // Navbar color change on scroll
+    if ($('.navbar').length != 0) {
+        $(window).on('scroll', pk.checkScrollForTransparentNavbar)
+    }
+
+    // Init popovers
+    pk.initPopovers();
+
+    // Init Collapse Areas
+    pk.initCollapseArea();
+
+    // Init Sliders
+    pk.initSliders();
 });
 
 
@@ -321,14 +322,16 @@ function debounce(func, wait, immediate) {
 };
 
 $(window).scroll(function(){
-	scroll = $(window).scrollTop();
+    if ($('.index-page').length > 0) {
+        scroll = $(window).scrollTop();
 
-	if (scroll >= 60) {
-		$('.navbar').removeClass('navbar-transparent');
-		$('.hide-inf').removeClass('hidden');
-	}
-	else {
-		$('.navbar').addClass('navbar-transparent');
-		$('.hide-inf').addClass('hidden');
-	}
+        if (scroll >= 60) {
+            $('.navbar').removeClass('navbar-transparent');
+            $('.hide-inf').removeClass('hidden');
+        }
+        else {
+            $('.navbar').addClass('navbar-transparent');
+            $('.hide-inf').addClass('hidden');
+        }
+    }
 });

@@ -35,35 +35,44 @@ var contactusForm;
 
 
 var contactSetup = function() {
-
 	// Setup the contact us form
 	contactusForm = document.forms['submit-to-google-contactus'];
 	contactusForm.addEventListener('submit', e => {
 		e.preventDefault()
 		$('#contactForm').addClass('hidden')
-		$('#contactProcessing').removeClass('hidden')
+		$('#contactSending').removeClass('hidden')
 		fetch(contactusScriptURL, {
 				method: 'POST',
 				body: new FormData(contactusForm)
 			})
 			.then(response => {
-				$('#contactForm').trigger("reset")
-				$('#contactProcessing').addClass('hidden')
-				$('#contactSuccess').removeClass('hidden')
-
-				$('#contactModal').fadeTo(3000, 0, function () {
-					$('#contactSuccess').addClass('hidden')
-					$('#contactForm').removeClass('hidden')
-					$('#contactModal').modal('hide')
-					$('#contactModal').css({
-						opacity: 1
-					})
-				});
+				$('#contactForm').trigger("reset");
+				$('#contactSending').addClass('hidden');
+				$('#contactSuccess').removeClass('hidden');
+				if ($('#contactModal').length > 0) {
+					$('#contactModal').fadeTo(3000, 0, function () {
+						$('#contactSuccess').addClass('hidden');
+						$('#contactForm').trigger("reset");
+						$('#contactForm').removeClass('hidden');
+						$('#contactModal').modal('hide');
+						$('#contactModal').css({
+							opacity: 1
+						});
+					});
+				} else {
+					// When there is no modal
+					console.log("sent");
+					setTimeout(function() {
+						$('#contactSuccess').addClass('hidden');
+						$('#contactForm').delay(1500).trigger("reset");
+						$('#contactForm').delay(1500).removeClass('hidden');
+					}, 1500);
+				}
 			}).catch(error => {
-				$('#contactForm').trigger("reset")
-				$('#contactProcessing').addClass('hidden')
-				$('#contactFailed').removeClass('hidden')
-			})
+				$('#contactForm').trigger("reset");
+				$('#contactSending').addClass('hidden');
+				$('#contactFailed').removeClass('hidden');
+			});
 	});
 };
 
@@ -89,6 +98,3 @@ $('.articles-sort__tag button').click(function() {
 	$('.articles-sort__tag button').on('click', function(){
 	$(this).addClass('articles-sort__tag__current').parent().siblings().find('button').removeClass('articles-sort__tag__current');
 });
-
-
-

@@ -12,5 +12,6 @@ jobs:
         FTP_SERVER: ${{ secrets.FTP_HOST }}
         FTP_USERNAME: ${{ secrets.FTP_USER }}
         FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        REMOTE_DIR: public
         ARGS: --delete --verbose --dry-run
         # --delete arg will delete files on the server if you've deleted them in git

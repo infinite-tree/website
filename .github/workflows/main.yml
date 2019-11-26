@@ -7,7 +7,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Upload ftp
-      uses: sebastianpopp/ftp-action@releases/v1
+      uses: infinite-tree/ftp-action@8d8b551
       with:
         host: ${{ secrets.FTP_HOST }}
         user: ${{ secrets.FTP_USER }}

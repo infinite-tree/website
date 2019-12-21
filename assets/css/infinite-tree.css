@@ -1314,9 +1314,13 @@
   align-items: center;
   flex-wrap: wrap;
 }
+.section-white{
+    color: #777777;
+    background-color: #FFFFFF;
+}
 
 .section-light-grey{
-  color: #000000;
+  color: #777777;
   background-color: #CFCDC9;
 }
 .section-dark-grey{

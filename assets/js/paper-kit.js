@@ -61,11 +61,6 @@ $(document).ready(function(){
     // Activate bootstrap switch
     $('[data-toggle="switch"]').bootstrapSwitch();
 
-    // Navbar color change on scroll
-    if($('.navbar').length != 0){
-        $(window).on('scroll', pk.checkScrollForTransparentNavbar)
-    }
-
     // Activate tooltips
     $('.btn-tooltip').tooltip();
     $('.label-tooltip').tooltip();
@@ -81,6 +76,54 @@ $(document).ready(function(){
         $(this).parent(".input-group").removeClass("input-group-focus");
     });
 
+    // Twitter
+    var processTweet = function (tweets) {
+        // Hack to pull out the instagram link and make the whole text point there
+        for (var x = 0; x < tweets.length; x++) {
+            var loc = tweets[x].tweet.search("<a href");
+            var href = "";
+            if (loc >= 0) {
+                href = tweets[x].tweet.slice(loc);
+                href = href.slice(href.search('"') + 1);
+                href = href.slice(0, href.search('"'));
+
+                tweets[x].tweet = tweets[x].tweet.slice(0, loc);
+                tweets[x].instagram = href;
+            }
+        }
+
+        if (tweets.length > 0) {
+            var div1 = document.getElementById('Tweet1');
+            if (tweets[0].instagram && tweets[0].instagram.length) {
+                div1.href = tweets[0].instagram;
+            }
+            div1.innerHTML += tweets[0].tweet + "<hr class=\"hr-small\">";
+        }
+        if (tweets.length > 1) {
+            var div2 = document.getElementById('Tweet2');
+            if (tweets[1].instagram && tweets[1].instagram.length) {
+                div2.href = tweets[1].instagram;
+            }
+            div2.innerHTML += tweets[1].tweet;
+        }
+    };
+
+    var config = {
+        "profile": {
+            "screenName": 'infinitetreenu1'
+        },
+        "dataOnly": true,
+        "maxTweets": 2,
+        "domId": "foobar",
+        "customCallback": processTweet
+    };
+    twitterFetcher.fetch(config);
+
+    // Navbar color change on scroll
+    if ($('.navbar').length != 0) {
+        $(window).on('scroll', pk.checkScrollForTransparentNavbar)
+    }
+
     // Init popovers
     pk.initPopovers();
 
@@ -89,29 +132,6 @@ $(document).ready(function(){
 
     // Init Sliders
     pk.initSliders();
-
-    // Twitter
-    var processTweet = function(tweets) {
-
-        if (tweets.length > 0) {
-            var div1 = document.getElementById('Tweet1');
-            div1.innerHTML += tweets[0].tweet + "<hr class=\"hr-small\">";
-        }
-        if (tweets.length > 1) {
-            var div2 = document.getElementById('Tweet2');
-            div2.innerHTML += tweets[1].tweet;
-        }
-    };
-
-    var config = {
-        "profile": {"screenName": 'infinitetreenu1'},
-        "dataOnly": true,
-        "maxTweets": 2,
-        "domId": "foobar",
-        "customCallback": processTweet
-    };
-    twitterFetcher.fetch(config);
-
 });
 
 
@@ -302,14 +322,16 @@ function debounce(func, wait, immediate) {
 };
 
 $(window).scroll(function(){
-	scroll = $(window).scrollTop();
-  
-	if (scroll >= 60) {
-		$('.navbar').removeClass('navbar-transparent');
-		$('.hide-inf').removeClass('hidden');
-	}
-	else {
-		$('.navbar').addClass('navbar-transparent');
-		$('.hide-inf').addClass('hidden');
-	}
+    if ($('.index-page').length > 0) {
+        scroll = $(window).scrollTop();
+
+        if (scroll >= 60) {
+            $('.navbar').removeClass('navbar-transparent');
+            $('.hide-inf').removeClass('hidden');
+        }
+        else {
+            $('.navbar').addClass('navbar-transparent');
+            $('.hide-inf').addClass('hidden');
+        }
+    }
 });

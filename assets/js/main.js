@@ -77,6 +77,7 @@ var contactSetup = function() {
 };
 
 
+
 $(function () {
 	var includes = $('[data-include]');
 	jQuery.each(includes, function () {
@@ -84,6 +85,8 @@ $(function () {
 		if (file.search("contact") >= 0) {
 			$(this).load(file, contactSetup);
 		} else if (file.search("order") >= 0) {
+			$(this).load(file, orderSetup);
+		} else if (file.search("hemp") >= 0) {
 			$(this).load(file, orderSetup);
 		} else {
 			$(this).load(file);

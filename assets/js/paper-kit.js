@@ -94,6 +94,8 @@ $(document).ready(function(){
 
         if (tweets.length > 0) {
             var div1 = document.getElementById('Tweet1');
+            console.log("tweets:");
+            console.log(tweets);
             if (tweets[0].instagram && tweets[0].instagram.length) {
                 div1.href = tweets[0].instagram;
             }

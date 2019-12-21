@@ -48,7 +48,7 @@
 
     <!--     Fonts and icons     -->
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,300,700' rel='stylesheet' type='text/css'>
-	<script src="https://use.fontawesome.com/releases/v5.12.0/js/all.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.12.0/js/all.js"></script>
     <link href="./assets/css/nucleo-icons.css" rel="stylesheet">
 
 </head>
@@ -59,117 +59,35 @@
 		  <link itemprop="url" href="https://infinite-tree.com/assets/img/logo-medium.png">
 		</span>
 	</div>
-	<header class="navbar navbar-expand-lg fixed-top" data-include="header"></header>
+
+    <header class="navbar navbar-expand-lg fixed-top" data-include="header"></header>
+
     <div class="main">
-		<div class="articles-sort">
-			<div class="section-light-grey">
-				<div class="container">
-					<ul class="articles-sort__tag">
-						<li><button class="articles-sort__tag__current" id="img1" data-toggle="portfilter" data-target="all">Latest Articles</button></li>
-						<li><button data-toggle="portfilter" data-target="one">Popular</button></li>
-						<li><button data-toggle="portfilter" data-target="two">Product</button></li>
-						<li><button data-toggle="portfilter" data-target="three">Service</button></li>
-					</ul>
-				</div>
-			</div>
+		<article class="article">
+			<div class="container">
+				<h2>Title Of Article</h2>
+				<header>
+					<address class="author"><a href="#">Emily Gogol</a></address>
+					<time>Dec 19, 2019</time>
 
-			<div class="section pt-0">
-				<div class="container">
-					<h3 id="articles-sort__title">Latest Articles</h3>
-
-					<ul class="articles__list row">
-						<li class="col-md-4" data-tag="one">
-							<a href="article-template.html">
-								<figure class="figure">
-									<img src="assets/img/consulting.jpg" alt="img"/>
-									<figcaption>
-										<h5>Tag name #1</h5>
-										<p>Everything You Need to Know About Implementing a Price Increase</p>
-									</figcaption>
-								</figure>
-							</a>
-						</li>
-						<!-- <li class="col-md-4" data-tag="two">
-							<a href="article.html">
-								<figure class="figure">
-									<img src="assets/img/clones.jpg" alt="img"/>
-									<figcaption>
-										<h5>Tag name #2</h5>
-										<p>10 Essential Tactics for Creating Valuable Customer Surveys</p>
-									</figcaption>
-								</figure>
-							</a>
-						</li>
-						<li class="col-md-4" data-tag="three">
-							<a href="article.html">
-								<figure class="figure">
-									<img src="assets/img/IPMshot.jpg" alt="img"/>
-									<figcaption>
-										<h5>Tag name #3</h5>
-										<p>The Psychology of Color in Marketing and Branding</p>
-									</figcaption>
-								</figure>
-							</a>
-						</li>
-						<li class="col-md-4" data-tag="one">
-							<a href="article.html">
-								<figure class="figure">
-									<img src="assets/img/IPMshot.jpg" alt="img"/>
-									<figcaption>
-										<h5>Tag name #4</h5>
-										<p>The Psychology of Color in Marketing and Branding</p>
-									</figcaption>
-								</figure>
-							</a>
-						</li>
-						<li class="col-md-4" data-tag="one">
-							<a href="article.html">
-								<figure class="figure">
-									<img src="assets/img/IPMshot.jpg" alt="img"/>
-									<figcaption>
-										<h5>Tag name #5</h5>
-										<p>The Psychology of Color in Marketing and Branding</p>
-									</figcaption>
-								</figure>
-							</a>
-						</li>
-						<li class="col-md-4" data-tag="one">
-							<a href="article.html">
-								<figure class="figure">
-									<img src="assets/img/IPMshot.jpg" alt="img"/>
-									<figcaption>
-										<h5>Tag name #6</h5>
-										<p>The Psychology of Color in Marketing and Branding</p>
-									</figcaption>
-								</figure>
-							</a>
-						</li>
-						<li class="col-md-4" data-tag="two">
-							<a href="article.html">
-								<figure class="figure">
-									<img src="assets/img/IPMshot.jpg" alt="img"/>
-									<figcaption>
-										<h5>Tag name #7</h5>
-										<p>The Psychology of Color in Marketing and Branding</p>
-									</figcaption>
-								</figure>
-							</a>
-						</li>
-						<li class="col-md-4" data-tag="two">
-							<a href="article.html">
-								<figure class="figure">
-									<img src="assets/img/IPMshot.jpg" alt="img"/>
-									<figcaption>
-										<h5>Tag name #8</h5>
-										<p>The Psychology of Color in Marketing and Branding</p>
-									</figcaption>
-								</figure>
-							</a>
-						</li> -->
+					<ul class="social-list">
+						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+						<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+						<li><a href="#"><i class="fa fa-envelope"></i></a></li>
 					</ul>
-				</div>
+				</header>
+
+				<p>Some long text goes here</p>
+
+				<figure class="figure">
+					<img src="assets/img/clones.jpg" alt="img"/>
+				</figure>
+
+				<p>More text!!!</p>
 			</div>
-		</div>
+		</article>
     </div>
 
 	<div class="footer footer-big footer-color-black">
@@ -180,7 +98,6 @@
 			</div>
 		</div>
 	</div>
-
 
 <!-- Core JS Files -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -201,8 +118,6 @@
 <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@3.0.0/dist/fetch.umd.min.js"></script>
 <!--  Paper Kit Initialization and functions -->
 <script src="./assets/js/paper-kit.min.js?v=2.1.0"></script>
-<!-- <script src="./assets/js/paper-kit.js?v=2.1.0"></script> -->
-<script src="assets/js/bootstrap-portfilter.js"></script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>

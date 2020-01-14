@@ -76,6 +76,53 @@ var contactSetup = function() {
 	});
 };
 
+ // Twitter
+ var processTweet = function (tweets) {
+	// Hack to pull out the instagram link and make the whole text point there
+	for (var x = 0; x < tweets.length; x++) {
+		var loc = tweets[x].tweet.search("<a href");
+		var href = "";
+		if (loc >= 0) {
+			href = tweets[x].tweet.slice(loc);
+			href = href.slice(href.search('"') + 1);
+			href = href.slice(0, href.search('"'));
+
+			tweets[x].tweet = tweets[x].tweet.slice(0, loc);
+			tweets[x].instagram = href;
+		}
+	}
+
+	if (tweets.length > 0) {
+		var div1 = document.getElementById('Tweet1');
+		// console.log("tweets:");
+		// console.log(tweets);
+		if (tweets[0].instagram && tweets[0].instagram.length) {
+			div1.href = tweets[0].instagram;
+		}
+		div1.innerHTML += tweets[0].tweet + "<hr class=\"hr-small\">";
+	}
+	if (tweets.length > 1) {
+		var div2 = document.getElementById('Tweet2');
+		if (tweets[1].instagram && tweets[1].instagram.length) {
+			div2.href = tweets[1].instagram;
+		}
+		div2.innerHTML += tweets[1].tweet;
+	}
+};
+
+var loadTweets = function() {
+	var config = {
+		"profile": {
+			"screenName": 'infinitetreenu1'
+		},
+		"dataOnly": true,
+		"maxTweets": 2,
+		"domId": "foobar",
+		"customCallback": processTweet
+	};
+	twitterFetcher.fetch(config);
+};
+
 
 $(function () {
 	var includes = $('[data-include]');
@@ -85,6 +132,8 @@ $(function () {
 			$(this).load(file, contactSetup);
 		} else if (file.search("order") >= 0) {
 			$(this).load(file, orderSetup);
+		} else if (file.search("footer") >= 0) {
+			$(this).load(file, loadTweets);
 		} else {
 			$(this).load(file);
 		}

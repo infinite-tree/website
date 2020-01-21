@@ -1,4 +1,4 @@
-*{
+body{
   font-family: "avenir-book";
 }
 .tim-row{
@@ -1400,3 +1400,48 @@ label{
 .hoverbox.active .hoverbox-text_mobile {
   display: block;
 }
+
+
+.accordion-section .panel-default > .panel-heading {
+    border: 0;
+    background: #EEEEEE;
+    padding: 0;
+}
+.accordion-section .panel-default .panel-title a {
+    display: block;
+    font-size: 1.185em;
+}
+
+.icon::before {
+    display: none;
+}
+  
+.accordion-section .panel-default .panel-title a:after {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 3rem;
+    content: "\f106";
+    color: #777777;
+    float: right;
+    margin-top: -12px;
+}
+.accordion-section .panel-default .panel-title a.collapsed:after {
+    content: "\f107";
+}
+.accordion-section .panel-default .panel-body {
+    font-size: 1.2rem;
+}
+
+.panel-default > .panel-heading {
+    background-color: #CFCDC9;
+    border-color: #CFCDC9;
+    color: #777777;
+}
+
+#accordion .panel-title a, #accordion .panel-title a:hover, #accordion .panel-title a:focus {
+    color: #777777;
+}
+
+/* a.collapsed {
+    color: #B9A269;
+} */

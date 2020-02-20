@@ -1,6 +1,5 @@
 const inquieriesScriptURL = 'https://script.google.com/macros/s/AKfycbzysJCY5HlE4StfHRKI5QgAdhow_Ti1CRssLVBIkQ95vwAlcGTS/exec';
 var inquieriesForm;
-
 var orderSetup = function() {
 	// Setup the order form
 	inquieriesForm = document.forms['submit-to-google-inqueries'];
@@ -30,10 +29,41 @@ var orderSetup = function() {
 		})
 	});
 };
+
+const vineyardScriptURL = 'https://script.google.com/macros/s/AKfycbyPYcDUbRsmUFCh38YKgyr-5D-ET3TX_-M9ARI8u6mwSkTq5Ow/exec';
+var vineyardForm;
+var vineyardSetup = function() {
+	//Setup the Vineyard Order form
+	vineyardForm = document.forms['submit-to-google-vineyards'];
+	vineyardForm.addEventListener('submit', e => {
+	e.preventDefault()
+	$('#vineyardForm').addClass('hidden')
+	$('#vineyardProcessing').removeClass('hidden')
+	fetch(vineyardScriptURL, {
+			method: 'POST',
+			body: new FormData(vineyardForm)
+		})
+		.then(response => {
+		$('#vineyardForm').trigger("reset")
+		$('#vineyardProcessing').addClass('hidden')
+		$('#vineyardSuccess').removeClass('hidden')
+
+		$('#vineyardModal').fadeTo(3000, 0, function(){
+			$('#vineyardSuccess').addClass('hidden')
+			$('#vineyardForm').removeClass('hidden')
+			$('#vineyardModal').modal('hide')
+			$('#vineyardModal').css({opacity: 1})
+		});
+		}).catch(error => {
+		$('#vineyardForm').trigger("reset")
+		$('#vineyardProcessing').addClass('hidden')
+		$('#vineyardFailed').removeClass('hidden')
+		})
+	});
+};
+
 const contactusScriptURL = 'https://script.google.com/macros/s/AKfycbxUYqh3fzyT1vpKuOQaVciKCjSMbVqolbIM4kJ34KWx4AiSuRs/exec';
 var contactusForm;
-
-
 var contactSetup = function() {
 	// Setup the contact us form
 	contactusForm = document.forms['submit-to-google-contactus'];
@@ -132,6 +162,8 @@ $(function () {
 			$(this).load(file, contactSetup);
 		} else if (file.search("order") >= 0) {
 			$(this).load(file, orderSetup);
+		} else if (file.search("vineyard") >= 0) {
+			$(this).load(file, vineyardSetup);
 		} else if (file.search("footer") >= 0) {
 			$(this).load(file, loadTweets);
 		} else {

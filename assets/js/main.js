@@ -36,28 +36,28 @@ var vineyardSetup = function() {
 	//Setup the Vineyard Order form
 	vineyardForm = document.forms['submit-to-google-vineyards'];
 	vineyardForm.addEventListener('submit', e => {
-	e.preventDefault()
-	$('#vineyardForm').addClass('hidden')
-	$('#vineyardProcessing').removeClass('hidden')
-	fetch(vineyardScriptURL, {
+		e.preventDefault();
+		$('#vineyardForm').addClass('hidden');
+		$('#vineyardProcessing').removeClass('hidden');
+		fetch(vineyardScriptURL, {
 			method: 'POST',
 			body: new FormData(vineyardForm)
 		})
 		.then(response => {
-		$('#vineyardForm').trigger("reset")
-		$('#vineyardProcessing').addClass('hidden')
-		$('#vineyardSuccess').removeClass('hidden')
+			$('#vineyardForm').trigger("reset")
+			$('#vineyardProcessing').addClass('hidden')
+			$('#vineyardSuccess').removeClass('hidden')
 
-		$('#vineyardModal').fadeTo(3000, 0, function(){
-			$('#vineyardSuccess').addClass('hidden')
-			$('#vineyardForm').removeClass('hidden')
-			$('#vineyardModal').modal('hide')
-			$('#vineyardModal').css({opacity: 1})
-		});
+			$('#vineyardModal').fadeTo(3000, 0, function() {
+				$('#vineyardSuccess').addClass('hidden')
+				$('#vineyardForm').removeClass('hidden')
+				$('#vineyardModal').modal('hide')
+				$('#vineyardModal').css({opacity: 1})
+			});
 		}).catch(error => {
-		$('#vineyardForm').trigger("reset")
-		$('#vineyardProcessing').addClass('hidden')
-		$('#vineyardFailed').removeClass('hidden')
+			$('#vineyardForm').trigger("reset")
+			$('#vineyardProcessing').addClass('hidden')
+			$('#vineyardFailed').removeClass('hidden')
 		})
 	});
 };
@@ -68,9 +68,9 @@ var contactSetup = function() {
 	// Setup the contact us form
 	contactusForm = document.forms['submit-to-google-contactus'];
 	contactusForm.addEventListener('submit', e => {
-		e.preventDefault()
-		$('#contactForm').addClass('hidden')
-		$('#contactSending').removeClass('hidden')
+		e.preventDefault();
+		$('#contactForm').addClass('hidden');
+		$('#contactSending').removeClass('hidden');
 		fetch(contactusScriptURL, {
 				method: 'POST',
 				body: new FormData(contactusForm)
@@ -91,7 +91,6 @@ var contactSetup = function() {
 					});
 				} else {
 					// When there is no modal
-					console.log("sent");
 					setTimeout(function() {
 						$('#contactSuccess').addClass('hidden');
 						$('#contactForm').delay(1500).trigger("reset");
@@ -103,6 +102,50 @@ var contactSetup = function() {
 				$('#contactSending').addClass('hidden');
 				$('#contactFailed').removeClass('hidden');
 			});
+	});
+};
+
+const eventRegisterScriptURL = 'https://script.google.com/macros/s/AKfycbw48er3V3nQbkqH2wjciUy33wlhctKAXmP2EnJFvyCk44h67-NK/exec';
+var eventRegisterForm;
+var eventRegisterSetup = function() {
+	console.log("event setup!");
+	// Setup the event registration form
+	eventRegisterForm = document.forms['submit-to-google-events'];
+	eventRegisterForm.addEventListener('submit', e => {
+		e.preventDefault();
+		$('#eventRegisterForm').addClass('hidden');
+		$('#eventRegisterSending').removeClass('hidden');
+		fetch(eventRegisterScriptURL, {
+				method: 'POST',
+				body: new FormData(eventRegisterForm)
+		})
+		.then(response => {
+			$('#eventRegisterForm').trigger("reset");
+			$('#eventRegisterSending').addClass('hidden');
+			$('#eventRegisterSuccess').removeClass('hidden');
+			if ($('#eventRegisterModal').length > 0) {
+				$('#eventRegisterModal').fadeTo(3000, 0, function () {
+					$('#eventRegisterSuccess').addClass('hidden');
+					$('#eventRegisterForm').trigger("reset");
+					$('#eventRegisterForm').removeClass('hidden');
+					$('#eventRegisterModal').modal('hide');
+					$('#eventRegisterModal').css({
+						opacity: 1
+					});
+				});
+			} else {
+				// When there is no modal
+				setTimeout(function() {
+					$('#eventRegisterSuccess').addClass('hidden');
+					$('#eventRegisterForm').delay(1500).trigger("reset");
+					$('#eventRegisterForm').delay(1500).removeClass('hidden');
+				}, 1500);
+			}
+		}).catch(error => {
+			$('#eventRegisterForm').trigger("reset");
+			$('#eventRegisterSending').addClass('hidden');
+			$('#eventRegisterFailed').removeClass('hidden');
+		});
 	});
 };
 
@@ -164,6 +207,8 @@ $(function () {
 			$(this).load(file, orderSetup);
 		} else if (file.search("vineyard") >= 0) {
 			$(this).load(file, vineyardSetup);
+		} else if (file.search("register") >= 0) {
+			$(this).load(file, eventRegisterSetup);
 		} else if (file.search("footer") >= 0) {
 			$(this).load(file, loadTweets);
 		} else {

@@ -1259,6 +1259,10 @@ body{
     position: relative;
     z-index: 2;
 }
+.section-white .lnk,.section-white .lnk:active,.section-white .lnk:focus,.section-white .lnk:hover{
+    color: #B9A269;
+    padding-left: 0px;
+}
 
 .lnk,.lnk:active,.lnk:focus,.lnk:hover{
   /*color: #A89D5D;*/

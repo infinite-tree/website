@@ -12,20 +12,28 @@ var orderSetup = function() {
 			body: new FormData(inquieriesForm)
 		})
 		.then(response => {
-		$('#orderForm').trigger("reset")
-		$('#orderProcessing').addClass('hidden')
-		$('#orderSuccess').removeClass('hidden')
-
-		$('#orderModal').fadeTo(3000, 0, function(){
-			$('#orderSuccess').addClass('hidden')
-			$('#orderForm').removeClass('hidden')
-			$('#orderModal').modal('hide')
-			$('#orderModal').css({opacity: 1})
-		});
+			$('#orderForm').trigger("reset");
+			$('#orderProcessing').addClass('hidden')
+			$('#orderSuccess').removeClass('hidden')
+			if ($('#orderModal').length > 0) {
+				$('#orderModal').fadeTo(3000, 0, function(){
+					$('#orderSuccess').addClass('hidden')
+					$('#orderForm').removeClass('hidden')
+					$('#orderModal').modal('hide')
+					$('#orderModal').css({opacity: 1})
+				});
+			} else {
+				// No Order modal
+				setTimeout(function() {
+					$('#orderSuccess').addClass('hidden');
+					$('#orderForm').delay(1500).trigger("reset");
+					$('#orderForm').delay(1500).removeClass('hidden');
+				}, 1500);
+			}
 		}).catch(error => {
-		$('#orderForm').trigger("reset")
-		$('#orderProcessing').addClass('hidden')
-		$('#orderFailed').removeClass('hidden')
+			$('#orderForm').trigger("reset")
+			$('#orderProcessing').addClass('hidden')
+			$('#orderFailed').removeClass('hidden')
 		})
 	});
 };
@@ -200,7 +208,7 @@ var loadTweets = function() {
 $(function () {
 	var includes = $('[data-include]');
 	jQuery.each(includes, function () {
-		var file = 'views/' + $(this).data('include') + '.html';
+		var file = '/views/' + $(this).data('include') + '.html';
 		if (file.search("contact") >= 0) {
 			$(this).load(file, contactSetup);
 		} else if (file.search("order") >= 0) {

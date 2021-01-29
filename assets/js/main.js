@@ -1,3 +1,15 @@
+// Load the chat widget into all pages
+var widget = `
+<button type="button" class="chat-float-content" data-rel="tooltip" title="Get in touch" data-toggle="modal" data-target="#contactModal">
+	<i class="fas fa-comment-dots fa-3x"></i>
+</button>
+`;
+var chat_container = document.createElement('div');
+chat_container.setAttribute("id", "chat-widget");
+chat_container.innerHTML = widget;
+document.body.insertBefore(chat_container, document.body.firstChild);
+
+
 const inquieriesScriptURL = 'https://script.google.com/macros/s/AKfycbzysJCY5HlE4StfHRKI5QgAdhow_Ti1CRssLVBIkQ95vwAlcGTS/exec';
 var inquieriesForm;
 var orderSetup = function() {
@@ -206,6 +218,7 @@ var loadTweets = function() {
 
 
 $(function () {
+	// Include views
 	var includes = $('[data-include]');
 	jQuery.each(includes, function () {
 		var file = '/views/' + $(this).data('include') + '.html';
@@ -232,3 +245,4 @@ $('.articles-sort__tag button').click(function() {
 	$('.articles-sort__tag button').on('click', function(){
 	$(this).addClass('articles-sort__tag__current').parent().siblings().find('button').removeClass('articles-sort__tag__current');
 });
+

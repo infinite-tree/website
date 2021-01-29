@@ -1,6 +1,9 @@
 body{
   font-family: "avenir-book";
 }
+#chat-widget {
+    display: block !important;
+}
 .chat-float-content {
     outline: none !important;
     visibility: visible !important;
@@ -8,8 +11,9 @@ body{
     overflow: visible !important;
     background: none #FFFFFF !important;
     opacity: 1 !important;
-    inset: auto 20px 20px auto !important;
     position: fixed !important;
+	bottom:40px !important;
+	right:40px !important;
     border: 0px !important;
     padding-top: 5px !important;
     transition-property: none !important;

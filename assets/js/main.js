@@ -10,7 +10,8 @@ chat_container.innerHTML = widget;
 document.body.insertBefore(chat_container, document.body.firstChild);
 
 
-const inquieriesScriptURL = 'https://script.google.com/macros/s/AKfycbzysJCY5HlE4StfHRKI5QgAdhow_Ti1CRssLVBIkQ95vwAlcGTS/exec';
+const hempInquieriesScriptURL = 'https://hooks.zapier.com/hooks/catch/4519699/b9t7ek0';
+const olccInquieriesScriptURL = 'https://hooks.zapier.com/hooks/catch/4519699/b9h3shs';
 var inquieriesForm;
 var orderSetup = function() {
 	// Setup the order form
@@ -19,6 +20,29 @@ var orderSetup = function() {
 	e.preventDefault()
 	$('#orderForm').addClass('hidden')
 	$('#orderProcessing').removeClass('hidden')
+	
+	var data = new FormData(inquieriesForm);
+	var inquieriesScriptURL = hempInquieriesScriptURL;
+	var cloneType;
+	for (var value of data.getAll("CloneType")) {
+		if (value.length > 0) {
+			cloneType = value;
+		}
+	}
+	console.log(cloneType);
+	data.set("CloneType", cloneType);
+
+	var contactMethod;
+	for (var value of data.get("ContactMethod")) {
+		if (value.length > 0) {
+			contactMethod = value;
+		}
+	}
+	data.set("ContactMethod", contactMethod);
+
+	if (cloneType === "OLCC") {
+		inquieriesScriptURL = olccInquieriesScriptURL;
+	}
 	fetch(inquieriesScriptURL, {
 			method: 'POST',
 			body: new FormData(inquieriesForm)
@@ -50,39 +74,7 @@ var orderSetup = function() {
 	});
 };
 
-const vineyardScriptURL = 'https://script.google.com/macros/s/AKfycbyPYcDUbRsmUFCh38YKgyr-5D-ET3TX_-M9ARI8u6mwSkTq5Ow/exec';
-var vineyardForm;
-var vineyardSetup = function() {
-	//Setup the Vineyard Order form
-	vineyardForm = document.forms['submit-to-google-vineyards'];
-	vineyardForm.addEventListener('submit', e => {
-		e.preventDefault();
-		$('#vineyardForm').addClass('hidden');
-		$('#vineyardProcessing').removeClass('hidden');
-		fetch(vineyardScriptURL, {
-			method: 'POST',
-			body: new FormData(vineyardForm)
-		})
-		.then(response => {
-			$('#vineyardForm').trigger("reset")
-			$('#vineyardProcessing').addClass('hidden')
-			$('#vineyardSuccess').removeClass('hidden')
-
-			$('#vineyardModal').fadeTo(3000, 0, function() {
-				$('#vineyardSuccess').addClass('hidden')
-				$('#vineyardForm').removeClass('hidden')
-				$('#vineyardModal').modal('hide')
-				$('#vineyardModal').css({opacity: 1})
-			});
-		}).catch(error => {
-			$('#vineyardForm').trigger("reset")
-			$('#vineyardProcessing').addClass('hidden')
-			$('#vineyardFailed').removeClass('hidden')
-		})
-	});
-};
-
-const contactusScriptURL = 'https://script.google.com/macros/s/AKfycbxUYqh3fzyT1vpKuOQaVciKCjSMbVqolbIM4kJ34KWx4AiSuRs/exec';
+const contactusScriptURL = 'https://hooks.zapier.com/hooks/catch/4519699/b9tp8dr';
 var contactusForm;
 var contactSetup = function() {
 	// Setup the contact us form
@@ -118,6 +110,7 @@ var contactSetup = function() {
 					}, 1500);
 				}
 			}).catch(error => {
+				console.log(error);
 				$('#contactForm').trigger("reset");
 				$('#contactSending').addClass('hidden');
 				$('#contactFailed').removeClass('hidden');
@@ -125,7 +118,7 @@ var contactSetup = function() {
 	});
 };
 
-const eventRegisterScriptURL = 'https://script.google.com/macros/s/AKfycbw48er3V3nQbkqH2wjciUy33wlhctKAXmP2EnJFvyCk44h67-NK/exec';
+const eventRegisterScriptURL = 'https://hooks.zapier.com/hooks/catch/4519699/b9h37zm';
 var eventRegisterForm;
 var eventRegisterSetup = function() {
 	console.log("event setup!");
@@ -226,8 +219,6 @@ $(function () {
 			$(this).load(file, contactSetup);
 		} else if (file.search("order") >= 0) {
 			$(this).load(file, orderSetup);
-		} else if (file.search("vineyard") >= 0) {
-			$(this).load(file, vineyardSetup);
 		} else if (file.search("register") >= 0) {
 			$(this).load(file, eventRegisterSetup);
 		} else if (file.search("footer") >= 0) {

@@ -29,7 +29,7 @@ var orderSetup = function() {
 			cloneType = value;
 		}
 	}
-	console.log(cloneType);
+	//console.log(cloneType);
 	data.set("CloneType", cloneType);
 
 	var contactMethod;
@@ -121,7 +121,7 @@ var contactSetup = function() {
 const eventRegisterScriptURL = 'https://hooks.zapier.com/hooks/catch/4519699/b9h37zm';
 var eventRegisterForm;
 var eventRegisterSetup = function() {
-	console.log("event setup!");
+	//console.log("event setup!");
 	// Setup the event registration form
 	eventRegisterForm = document.forms['submit-to-google-events'];
 	eventRegisterForm.addEventListener('submit', e => {

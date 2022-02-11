@@ -12,4 +12,4 @@ jobs:
         host: ${{ secrets.FTP_HOST }}
         user: ${{ secrets.FTP_USER }}
         password: ${{ secrets.FTP_PASSWORD }}
-        remoteDir: "secure"
+        remoteDir: "public"
